@@ -32,7 +32,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
-gem 'bootstrap', '~> 4.1.0'
+gem 'bootstrap-sass'
 gem 'toastr-rails'
 gem 'jquery-datatables-rails'
 gem 'ajax-datatables-rails'

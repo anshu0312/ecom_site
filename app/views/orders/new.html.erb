@@ -1,0 +1,33 @@
+<div class="row">
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#product" role="tab">Products</a>
+    </li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div class="col-md-6">
+      <div class="tab-pane active" id="product" role="tabpanel">
+        <% @products.each do |product| %>
+          <div class="col-md-4 col-sm-6">
+            <div class="sc-product-item">
+              <h4 data-name="product_name"><%= product.name %></h4>
+              <p data-name="product_desc">Product details</p>
+              <input class="sc-cart-item-qty" name="product_quantity" min="1" value="1" type="number">
+              <%= hidden_field_tag("product_price", product.price, class: "product-price", id: "#{product.id}") %>
+              <%= hidden_field_tag :product_id, product.id %>
+              <button class="sc-add-to-cart btn btn-success">Add to cart</button>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+  <div class="col-md-6">
+    <%= form_for([@user, @order]) do |f| %>
+      <%= f.hidden_field :total, value: nil %>
+      <div id="smartcart"></div>
+    <% end %>
+  </div>
+</div>

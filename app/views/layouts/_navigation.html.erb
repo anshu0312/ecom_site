@@ -1,14 +1,28 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">My Shop</a>
-  <ul class="navbar-nav ml-auto">
-    <% if user_signed_in? %>
-      <li class="nav-item">
-        <%= link_to 'Logout', destroy_user_session_path, method: :delete, class:"nav-link" %>
-      </li>
-    <% else %>
-      <li class="nav-item">
-        <%= link_to 'Register', new_user_registration_path, class:"nav-link"  %>
-      </li>
-    <% end %>
-  </ul>
+<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Brand</a>
+      <% if user_signed_in? %>
+        <p class="navbar-text">Signed in as <%= current_user.first_name %> <%= current_user.last_name %></p>
+      <% end %>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+          <% if current_user.admin? %>
+            <li><%= link_to 'Products', products_path %></li>
+            <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to 'Place Order', new_user_order_path(current_user) %></li>
+            <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+          <% end %>
+        <% else %>
+          <li><%= link_to 'Register', new_user_registration_path %></li>
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
 </nav>
