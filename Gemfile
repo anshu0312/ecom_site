@@ -34,6 +34,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'bootstrap', '~> 4.1.0'
 gem 'toastr-rails'
+gem 'jquery-datatables-rails'
+gem 'ajax-datatables-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

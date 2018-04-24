@@ -13,8 +13,9 @@
     <header>
       <%= render 'layouts/navigation' %>
     </header>
-    <main role="main">
-      <%= render 'layouts/messages' %>
+    <main role="main" class="container">
+      <%= custom_bootstrap_flash %>
+
       <%= yield %>
     </main>
   </body>
